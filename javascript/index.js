@@ -1,70 +1,72 @@
-hamburgerPrice = ``;
-cheeseburgerPrice = ``;
-potatoPrice = ``;
-saucePrice = ``;
-
-
+price = 0
 
 do {
 	typeOfRoll = prompt(`Hamburger or Cheeseburger?`);
-} while (typeOfRoll !== `Hamburger` && typeOfRoll !== `Cheeseburger`)
+	if(typeOfRoll){
+		 typeOfRoll = typeOfRoll.replaceAll(` `,``).toLowerCase();
+	}
+} while (typeOfRoll !== `hamburger` && typeOfRoll !== `cheeseburger`)
 console.log(typeOfRoll);
 
-if (typeOfRoll === `Hamburger`) {
-	hamburgerPrice = 10
-} else if (typeOfRoll === `Cheeseburger`) {
-	hamburgerPrice = 15
+if (typeOfRoll === `hamburger`)
+    price += 10;
+
+if (typeOfRoll === `cheeseburger`) {
+    price += 15;
 }
-console.log(hamburgerPrice)
+console.log(price)
 
 
-doubleCheese = confirm(`Would you like double cheese?`);
-if (doubleCheese) {
-	doubleCheese = 5
+if (typeOfRoll === `cheeseburger`) {
+	price += 15;
+
+	doubleCheese = confirm(`Would you like double cheese?`);
+	if (doubleCheese)
+		 price += 5
 }
-console.log(doubleCheese)
 
 potato = confirm(`Would you like potato?`);
 if (potato) {
-	potato = prompt(`Choose potato size: small/middle/big`)
+    potatoType = prompt(`Choose potato size: small/middle/big`);
+    if(potatoType)
+       potatoType = potatoType.replaceAll(` `,``).toLowerCase();
+
+    switch (potatoType) {
+        case potatoType === `middle`:
+            price += 15;
+            break;
+        case potatoType === `big`:
+            price += 20;
+            break;
+        default:
+            potatoType = `small`
+            price += 10;
+    }
 }
-switch (true) {
-	case potato === `small` || potato === `` || !potato:
-		potatoPrice = 10;
-		potato = `small`
-		break;
-	case potato === `middle`:
-		potatoPrice = 15;
-		break;
-	case potato === `big`:
-		potatoPrice = 20;
-		break;
-}
-console.log(potatoPrice)
+console.log(price)
 
 
 sauce = confirm(`Would you like sauce?`);
 if (sauce) {
-	sauce = prompt(`Choose sauce: ketchup/mayonnaise`)
-}
-if (sauce === `ketchup` || sauce === `` || !sauce) {
-	saucePrice = 10;
-	sauce = `ketchup`
-} else if (sauce === `mayonnaise`) {
-	saucePrice = 10;
-	sauce = `mayonnaise`;
-}
-console.log(saucePrice)
+    sauceType = prompt(`Choose sauce: ketchup/mayonnaise`);
+    if(sauceType)
+        sauceType = sauceType.replaceAll(` `,``).toLowerCase();
 
-price = Number((hamburgerPrice) + Number(cheeseburgerPrice) + Number(potatoPrice) + Number(saucePrice) + Number(doubleCheese))
+    if(sauceType !== `mayonnaise`){
+        sauceType = `ketchup`
+    }
+
+    price += 10;
+}
+console.log(price)
+
+
 
 document.write(`<h2>Your order:</h2>
-	<ul>
-		<li>Bulka 🍔: ${typeOfRoll} </li>
-		<li>Potato 🍟: ${potato} </li>
-		<li>Sauce 🧂: ${sauce} </li>
-	</ul>
-
-	<p>Price: $${price} </p>
+    <ul>
+        <li>Bulka 🍔: ${typeOfRoll} </li>
+        ${potato ? `<li>Potato 🍟: ${potatoType}</li>` : ``}
+        ${sauce ? `<li>Sauce 🧂: ${sauceType}</li>` : ``}
+    </ul>
+    <p>Price: $${price}</p>
 `);
-
