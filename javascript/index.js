@@ -13,17 +13,16 @@ if (typeOfRoll === `hamburger`)
 
 if (typeOfRoll === `cheeseburger`) {
     price += 15;
-}
+} doubleCheese = confirm(`Would you like double cheese?`);
+if (doubleCheese)
+	 price += 5
 console.log(price)
 
 
-if (typeOfRoll === `cheeseburger`) {
-	price += 15;
 
-	doubleCheese = confirm(`Would you like double cheese?`);
-	if (doubleCheese)
-		 price += 5
-}
+
+	
+
 
 potato = confirm(`Would you like potato?`);
 if (potato) {
