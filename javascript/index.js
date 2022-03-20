@@ -30,10 +30,10 @@ if (potato) {
        potatoType = potatoType.replaceAll(` `,``).toLowerCase();
 
     switch (potatoType) {
-        case potatoType === `middle`:
+        case potatoType = `middle`:
             price += 15;
             break;
-        case potatoType === `big`:
+        case potatoType = `big`:
             price += 20;
             break;
         default:
